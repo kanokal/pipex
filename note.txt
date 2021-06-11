@@ -48,6 +48,13 @@ wait()의 인자 status 를 통하여 자식 프로세스의 상태를 받아올
 
 
 
+ #include <unistd.h>
+
+int dup(int oldfd);
+int dup2(int oldfd, int newfd);
+
+
+
 
 
 
