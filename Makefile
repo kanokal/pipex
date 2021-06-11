@@ -6,7 +6,7 @@
 #    By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/11 14:51:11 by jpyo              #+#    #+#              #
-#    Updated: 2021/06/11 18:29:18 by jpyo             ###   ########.fr        #
+#    Updated: 2021/06/11 18:47:10 by jpyo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,9 @@ $(FT_LIB_DIR)$(FT_LIB) :
 
 clean :
 	rm -rf $(SRCS_OBJS)
+	$(MAKE) -C $(FT_LIB_DIR) clean
 
 fclean : clean
-	rm -rf $(NAME)
+	rm -rf $(NAME) $(FT_LIB_DIR)$(FT_LIB)
 
 re : fclean all
