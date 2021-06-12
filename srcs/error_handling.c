@@ -26,8 +26,14 @@ void	pipex_malloc_error(char *s1, char *s2, char **split1, char **split2)
 	exit(-2);
 }
 
-void	pipex_open_error(int err)
+void	pipex_open_error(void)
 {
 	perror("open");
-	exit(err);
+	exit(errno);
+}
+
+void	pipex_dup2_error(void)
+{
+	perror("dup2");
+	exit(errno);
 }
