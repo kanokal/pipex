@@ -50,20 +50,26 @@ int	main(int argc, char **argv, char **envp)
 	int	fd[2];
 	int	pid;
 
-	if (pipe(fd) < 0)
+	if (argc > 3)
 	{
-		perror("pipe");
-		exit(-1);
-	}
-	pid = fork();
-	if (pid == 0)
-		pipex_child(fd, argc, argv, envp);
-	else if (pid > 0)
-		pipex_parent(fd, argc, argv, envp);
-	else
-	{
-		perror("fork");
-		exit(-2);
+		if (pipe(fd) < 0)
+		{
+			perror("pipe");
+			exit(errno);
+		}
+		while (1)
+		{
+			pid = fork();
+			if (pid == 0)
+				pipex_child(fd, argc, argv, envp);
+			else if (pid > 0)
+				pipex_parent(fd, argc, argv, envp);
+			else
+			{
+				perror("fork");
+				exit(-2);
+			}
+		}
 	}
 	return (0);
 }
