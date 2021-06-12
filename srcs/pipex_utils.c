@@ -6,18 +6,18 @@
 /*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 17:34:45 by jpyo              #+#    #+#             */
-/*   Updated: 2021/06/11 18:40:04 by jpyo             ###   ########.fr       */
+/*   Updated: 2021/06/12 22:12:51 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-void	pipex_get_path_n_cmd(char ***path, char ***cmd, char **argv, char **envp)
+void	pipex_get_path_n_cmd(char ***path, char ***cmd, t_pipex var)
 {
-	*path = pipex_get_path(envp);
+	*path = pipex_get_path(var.envp);
 	if (*path == NULL)
 		pipex_malloc_error(NULL, NULL, NULL, NULL);
-	*cmd = ft_split(argv[2], ' ');
+	*cmd = ft_split(var.argv[var.cur], ' ');
 	if (*cmd == NULL)
 		pipex_malloc_error(NULL, NULL, *path, NULL);
 }
