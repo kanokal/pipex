@@ -6,70 +6,72 @@
 /*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 01:52:42 by jpyo              #+#    #+#             */
-/*   Updated: 2021/06/11 18:26:05 by jpyo             ###   ########.fr       */
+/*   Updated: 2021/06/12 22:11:06 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-/*
-	in = open("infile", O_RDONLY);
-	if (in < 0)
-	{
-		perror("open");
-		exit(1);
-	}
-	out = open("outfile", O_RDWR | O_CREAT | O_TRUNC);
-	if (out < 0)
-	{
-		perror("open");
-		exit(1);
-	}
-	dup2(in, 0);
-	dup2(out, 1);
-	//i = 0;
-	//while (envp[i] != 0)
-	//{
-	//	printf("%s\n", envp[i]);
-	//	i++;
-	//}
-	// wc
-	// grep = /usr/bin/grep
-	// ls = /bin/ls
-*/
+static void	pipex_struct_set(t_pipex *var, int argc, char **argv, char **envp)
+{
+	var->last = argc;
+	var->argv = argv;
+	var->envp = envp;
+}
 
-// execve(path, argv, envp);
-// /bin/ls
-// /usr/bin/grep
+static void	pipex_fork(t_pipex var)
+{
+	int	err;
+	int	pid;
+
+	pid = fork();
+	if (pid == 0)
+		pipex_child(var);
+	else if (pid > 0)
+	{
+		wait(&err);
+		if (err != 0)
+		{
+			close(var.fd[0]);
+			close(var.fd[1]);
+			exit(err);
+		}
+		var.cur++;
+		if (var.cur == 2)
+			var.cur++;
+		if (var.cur == var.last - 1)
+			pipex_parent(var);
+		else if (var.cur < var.last - 1)
+			return (pipex_fork(var));
+		else
+		{
+			write(2, "error\n", 6);
+			exit(-1);
+		}
+	}
+	else
+	{
+		perror("fork");
+		exit(-2);
+	}
+}
 
 int	main(int argc, char **argv, char **envp)
 {
-	int	i;
-	int	out;
-	int	in;
-	int	fd[2];
-	int	pid;
+	t_pipex	var;
 
-	if (argc > 3)
+	pipex_struct_set(&var, argc - 1, argv, envp);
+	var.cur = 1;
+	if (argc > 4)
 	{
-		if (pipe(fd) < 0)
+		if (pipe(var.fd) < 0)
 		{
 			perror("pipe");
 			exit(errno);
 		}
-		while (1)
-		{
-			pid = fork();
-			if (pid == 0)
-				pipex_child(fd, argc, argv, envp);
-			else if (pid > 0)
-				pipex_parent(fd, argc, argv, envp);
-			else
-			{
-				perror("fork");
-				exit(-2);
-			}
-		}
+		pipex_fork(var);
 	}
+	else if (argc == 4)
+		pipex_one(var);
 	return (0);
 }
