@@ -6,18 +6,18 @@
 #    By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/11 14:51:11 by jpyo              #+#    #+#              #
-#    Updated: 2021/06/11 18:47:10 by jpyo             ###   ########.fr        #
+#    Updated: 2021/06/12 22:11:03 by jpyo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			=	a.out
+NAME			=	pipex
 CC				=	gcc
-CFLAGS			=	#-Wall -Wextra -Werror
+CFLAGS			=	-Wall -Wextra -Werror
 
 HEADER_DIR		=	./includes/
 
 FILES			=	pipex \
-					pipex_parent pipex_child \
+					pipex_one pipex_parent pipex_child \
 					error_handling pipex_utils
 SRCS_DIR		=	./srcs/
 SRCS			=	$(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
