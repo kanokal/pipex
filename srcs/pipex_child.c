@@ -12,30 +12,38 @@
 
 #include "../includes/pipex.h"
 
+static void	pipex_child_err(char **path, char**cmd, int in)
+{
+	ft_free_split(path);
+	ft_free_split(cmd);
+	close(in);
+	perror("execve");
+	exit(-1);
+}
+
 void	pipex_child(int fd[2], int argc, char **argv, char **envp)
 {
-	int		i;
+	int		idx;
 	int		in;
-	char	**absolute_path;
+	char	**path;
 	char	**cmd;
 	char	*execve_path;
 
-	//dup2(fd[1], 1);
-	close(fd[0]);
+	if (dup2(fd[1], 1) < 0)
+		pipex_dup2_error();
 	close(fd[1]);
 	in = open(argv[1], O_RDONLY);
 	if (in < 0)
-		pipex_open_error(in);
-	pipex_get_path_n_cmd(&absolute_path, &cmd, argv, envp);
-	i = 0;
-	while (absolute_path[i] != 0)
+		pipex_open_error();
+	if (dup2(in, 0) < 0);
+		pipex_dup2_error();
+	pipex_get_path_n_cmd(&path, &cmd, argv, envp);
+	idx = 0;
+	while (path[idx] != 0)
 	{
-		execve_path = pipex_set_path(i++, absolute_path, cmd);
+		execve_path = pipex_set_path(idx++, path, cmd);
 		execve(execve_path, cmd, envp);
 		ft_free_ptr(&execve_path);
 	}
-	ft_free_split(absolute_path);
-	ft_free_split(cmd);
-	perror("execve");
-	exit(-1);
+	pipex_child_err(path, cmd, in);
 }
