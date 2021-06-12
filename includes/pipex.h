@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <errno.h>
 # include "../libft/includes/libft.h"
 
 void	pipex_parent(int fd[2], int argc, char **argv, char **envp);
@@ -25,7 +26,8 @@ char	**pipex_get_path(char **envp);
 char	*pipex_set_path(int i, char **absolute_path, char **cmd);
 void	pipex_get_path_n_cmd(char ***path, char ***cmd, char **argv, char **envp);
 
-void	pipex_open_error(int err);
+void	pipex_open_error(void);
+void	pipex_dup2_error(void);
 void	pipex_malloc_error(char *s1, char *s2, char **split1, char **split2);
 
 # include <stdio.h>
