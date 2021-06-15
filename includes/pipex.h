@@ -6,7 +6,7 @@
 /*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 15:10:21 by jpyo              #+#    #+#             */
-/*   Updated: 2021/06/12 22:11:36 by jpyo             ###   ########.fr       */
+/*   Updated: 2021/06/15 21:57:57 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <errno.h>
+# include <sys/wait.h>
 # include "pipex_structure.h"
 # include "../libft/includes/libft.h"
 
-void	pipex_one(t_pipex var);
 void	pipex_parent(t_pipex var);
 void	pipex_child(t_pipex var);
 
