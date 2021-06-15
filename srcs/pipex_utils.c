@@ -6,21 +6,11 @@
 /*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 17:34:45 by jpyo              #+#    #+#             */
-/*   Updated: 2021/06/12 22:12:51 by jpyo             ###   ########.fr       */
+/*   Updated: 2021/06/15 17:50:02 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
-
-void	pipex_get_path_n_cmd(char ***path, char ***cmd, t_pipex var)
-{
-	*path = pipex_get_path(var.envp);
-	if (*path == NULL)
-		pipex_malloc_error(NULL, NULL, NULL, NULL);
-	*cmd = ft_split(var.argv[var.cur], ' ');
-	if (*cmd == NULL)
-		pipex_malloc_error(NULL, NULL, *path, NULL);
-}
 
 char	*pipex_set_path(int i, char **absolute_path, char **cmd)
 {
@@ -53,4 +43,14 @@ char	**pipex_get_path(char **envp)
 	if (split == NULL)
 		return (NULL);
 	return (split);
+}
+
+void	pipex_get_path_n_cmd(char ***path, char ***cmd, t_pipex var)
+{
+	*path = pipex_get_path(var.envp);
+	if (*path == NULL)
+		pipex_malloc_error(NULL, NULL, NULL, NULL);
+	*cmd = ft_split(var.argv[var.cur], ' ');
+	if (*cmd == NULL)
+		pipex_malloc_error(NULL, NULL, *path, NULL);
 }
