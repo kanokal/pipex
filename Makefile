@@ -6,18 +6,18 @@
 #    By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/11 14:51:11 by jpyo              #+#    #+#              #
-#    Updated: 2021/06/24 15:59:56 by jpyo             ###   ########.fr        #
+#    Updated: 2021/06/24 20:07:49 by jpyo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	pipex
 CC				=	gcc
-CFLAGS			=	#-Wall -Wextra -Werror
+CFLAGS			=	-Wall -Wextra -Werror
 
 HEADER_DIR		=	./includes/
 
 FILES			=	pipex \
-					pipex_parent pipex_child \
+					pipex_fork pipex_child \
 					error_handling pipex_utils \
 					pipex_here_doc
 SRCS_DIR		=	./srcs/
