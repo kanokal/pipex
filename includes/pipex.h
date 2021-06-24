@@ -6,7 +6,7 @@
 /*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 15:10:21 by jpyo              #+#    #+#             */
-/*   Updated: 2021/06/15 21:57:57 by jpyo             ###   ########.fr       */
+/*   Updated: 2021/06/24 15:01:36 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ char	**pipex_get_path(char **envp);
 char	*pipex_set_path(int i, char **path, char **cmd);
 void	pipex_get_path_n_cmd(char ***path, char ***cmd, t_pipex var);
 
+void	pipex_pipe_error(void);
 void	pipex_open_error(void);
-void	pipex_dup2_error(t_pipex var, int option);
+void	pipex_dup2_error(void);
+void	pipex_fork_error(void);
 void	pipex_malloc_error(char *s1, char *s2, char **split1, char **split2);
 
 #endif

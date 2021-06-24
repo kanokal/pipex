@@ -6,7 +6,7 @@
 /*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 17:34:45 by jpyo              #+#    #+#             */
-/*   Updated: 2021/06/15 17:50:02 by jpyo             ###   ########.fr       */
+/*   Updated: 2021/06/24 15:11:30 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ char	*pipex_set_path(int i, char **absolute_path, char **cmd)
 
 	path = ft_strjoin(absolute_path[i], "/");
 	if (path == NULL)
-		pipex_malloc_error(NULL, NULL, absolute_path, cmd);
+		ft_error_handling("error: malloc failed\n");
 	execve_path = ft_strjoin(path, cmd[0]);
 	ft_free_ptr(&path);
 	if (execve_path == NULL)
-		pipex_malloc_error(NULL, NULL, absolute_path, cmd);
+		ft_error_handling("error: malloc failed\n");
 	return (execve_path);
 }
 
@@ -49,8 +49,8 @@ void	pipex_get_path_n_cmd(char ***path, char ***cmd, t_pipex var)
 {
 	*path = pipex_get_path(var.envp);
 	if (*path == NULL)
-		pipex_malloc_error(NULL, NULL, NULL, NULL);
+		ft_error_handling("error: malloc failed\n");
 	*cmd = ft_split(var.argv[var.cur], ' ');
 	if (*cmd == NULL)
-		pipex_malloc_error(NULL, NULL, *path, NULL);
+		ft_error_handling("error: malloc failed\n");
 }

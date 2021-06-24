@@ -6,13 +6,13 @@
 /*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 18:27:43 by jpyo              #+#    #+#             */
-/*   Updated: 2021/06/15 21:53:42 by jpyo             ###   ########.fr       */
+/*   Updated: 2021/06/24 15:09:56 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-void	pipex_malloc_error(char *s1, char *s2, char **split1, char **split2)
+void	pipex_error_handling(char *s1, char *s2, char **split1, char **split2)
 {
 	if (s1 != NULL)
 		free(s1);
@@ -23,28 +23,30 @@ void	pipex_malloc_error(char *s1, char *s2, char **split1, char **split2)
 	if (split2 != NULL)
 		ft_free_split(split2);
 	write(2, "error: malloc failed\n", 21);
-	exit(-1);
+	exit(1);
 }
 
 void	pipex_pipe_error(void)
 {
 	perror("pipe");
-	exit(-1);
+	exit(1);
 }
 
 void	pipex_open_error(void)
 {
 	perror("open");
-	exit(-1);
+	exit(1);
 }
 
-void	pipex_dup2_error(t_pipex var, int option)
+void	pipex_dup2_error(void)
 {
-	if (option == 1)
-	{
-		close(var.fd[0]);
-		close(var.fd[1]);
-	}
 	perror("dup2");
-	exit(-1);
+	exit(1);
 }
+
+void	pipex_fork_error(void)
+{
+	perror("fork");
+	exit(1);
+}
+

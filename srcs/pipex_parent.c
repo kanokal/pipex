@@ -6,12 +6,12 @@
 /*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 15:18:44 by jpyo              #+#    #+#             */
-/*   Updated: 2021/06/15 21:54:05 by jpyo             ###   ########.fr       */
+/*   Updated: 2021/06/24 15:11:46 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
-
+/*
 static void	pipex_parent_err(char **path, char**cmd)
 {
 	ft_free_split(path);
@@ -62,3 +62,4 @@ void	pipex_parent(t_pipex var)
 	close(var.fd[1]);
 	return (pipex_parent_do(var, outfile));
 }
+*/
