@@ -6,7 +6,7 @@
 /*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 01:52:42 by jpyo              #+#    #+#             */
-/*   Updated: 2021/06/24 15:17:29 by jpyo             ###   ########.fr       */
+/*   Updated: 2021/06/24 16:44:00 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	pipex_fork(t_pipex var, int cmd_count)
 		}
 		else if (idx == cmd_count - 1)
 		{
-			outfile = open("outfile", O_WRONLY | O_CREAT | O_TRUNC);
+			outfile = open("outfile", O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 			if (outfile < 0)
 				pipex_open_error();
 			var.fd[0] = pipe_fd[idx - 1][0];
@@ -56,8 +56,8 @@ static void	pipex_fork(t_pipex var, int cmd_count)
 		}
 		else
 		{
-			var.fd[0] = pipe_fd[idx - 1][1];
-			var.fd[1] = pipe_fd[idx][0];
+			var.fd[0] = pipe_fd[idx - 1][0];
+			var.fd[1] = pipe_fd[idx][1];
 		}
 		pipex_pid = fork();
 		if (pipex_pid == 0)
@@ -90,10 +90,8 @@ int	main(int argc, char **argv, char **envp)
 	pipex_struct_set(&var, argc - 1, argv, envp);
 	if (argc > 4)
 	{
-		if (ft_strnstr(argv[1], "here_doc", 9) != 0)
-		{
-			var.cur = 3;
-		}
+		if (argc > 5 && ft_strncmp(argv[1], "here_doc", 9) == 0)
+			pipex_here_doc(var, argc - 4);
 		else
 		{
 			var.cur = 2;

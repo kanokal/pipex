@@ -6,19 +6,20 @@
 #    By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/11 14:51:11 by jpyo              #+#    #+#              #
-#    Updated: 2021/06/15 21:44:36 by jpyo             ###   ########.fr        #
+#    Updated: 2021/06/24 15:59:56 by jpyo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	pipex
 CC				=	gcc
-CFLAGS			=	-Wall -Wextra -Werror
+CFLAGS			=	#-Wall -Wextra -Werror
 
 HEADER_DIR		=	./includes/
 
 FILES			=	pipex \
 					pipex_parent pipex_child \
-					error_handling pipex_utils
+					error_handling pipex_utils \
+					pipex_here_doc
 SRCS_DIR		=	./srcs/
 SRCS			=	$(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
 SRCS_OBJS		=	$(addprefix $(SRCS_DIR), $(addsuffix .o, $(FILES)))
@@ -36,6 +37,8 @@ $(FT_LIB_DIR)$(FT_LIB) :
 
 %.o : %.c
 	$(CC) -c $(CFLAGS) $< -o $(<:.c=.o)
+
+bonus : $(NAME)
 
 clean :
 	rm -rf $(SRCS_OBJS)
