@@ -6,7 +6,7 @@
 /*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 17:34:45 by jpyo              #+#    #+#             */
-/*   Updated: 2021/06/24 15:11:30 by jpyo             ###   ########.fr       */
+/*   Updated: 2021/06/24 20:06:26 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	**pipex_get_path(char **envp)
 	while (envp[i] != 0)
 	{
 		if (ft_strncmp("PATH=", envp[i], 5) == 0)
-			break;
+			break ;
 		i++;
 	}
 	split = ft_split(envp[i] + 5, ':');

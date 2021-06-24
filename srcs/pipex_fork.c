@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_here_doc.c                                   :+:      :+:    :+:   */
+/*   pipex_fork.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/24 15:40:16 by jpyo              #+#    #+#             */
-/*   Updated: 2021/06/24 20:21:08 by jpyo             ###   ########.fr       */
+/*   Created: 2021/06/08 01:52:42 by jpyo              #+#    #+#             */
+/*   Updated: 2021/06/24 20:21:13 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-static void	pipex_here_doc_do(t_pipex *var, int *idx)
+static void	pipex_fork_do(t_pipex *var, int *idx)
 {
 	int		wstatus;
 	pid_t	pipex_pid;
@@ -32,38 +32,37 @@ static void	pipex_here_doc_do(t_pipex *var, int *idx)
 			(*idx)++;
 		}
 		else
-		{
-			write(2, "Error\n", 6);
 			exit(1);
-		}
 	}
 	else
 		pipex_fork_error();
 }
 
-static void	pipex_here_doc_pipe_set(t_pipex *var, int *in, int fd[][2], int idx)
+static void	pipex_pipe_set(t_pipex *var, int fd[][2], int idx)
 {
 	if (idx == 0)
 	{
-		var->fd[0] = in[0];
+		var->fd[0] = open("infile", O_RDONLY);
+		if (var->fd[0] < 0)
+			pipex_open_error();
 		var->fd[1] = fd[idx][1];
 	}
 	else if (idx == var->cmd_count - 1)
 	{
-		var->fd[1] = open("outfile", O_WRONLY | O_CREAT | O_APPEND,
-								S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+		var->fd[1] = open("outfile", O_WRONLY | O_CREAT | O_TRUNC,
+							S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 		if (var->fd[1] < 0)
 			pipex_open_error();
 		var->fd[0] = fd[idx - 1][0];
 	}
 	else
 	{
-		var->fd[0] = fd[idx - 1][1];
-		var->fd[1] = fd[idx][0];
+		var->fd[0] = fd[idx - 1][0];
+		var->fd[1] = fd[idx][1];
 	}
 }
 
-static void	pipex_fork_here_doc(t_pipex var, int infile[2])
+void		pipex_fork(t_pipex var)
 {
 	int		idx;
 	int		fd[var.cmd_count - 1][2];
@@ -78,32 +77,7 @@ static void	pipex_fork_here_doc(t_pipex var, int infile[2])
 	idx = 0;
 	while (idx < var.cmd_count)
 	{
-		pipex_here_doc_pipe_set(&var, infile, fd, idx);
-		pipex_here_doc_do(&var, &idx);
+		pipex_pipe_set(&var, fd, idx);
+		pipex_fork_do(&var, &idx);
 	}
-}
-
-void		pipex_here_doc(t_pipex var)
-{
-	int		gnl_ret;
-	int		infile[2];
-	char	*line;
-
-	if (pipe(infile) < 0)
-		pipex_pipe_error();
-	while ((gnl_ret = get_next_line(0, &line)) >= 0)
-	{
-		if (ft_strncmp(line, var.argv[2], ft_strlen(var.argv[2]) + 1) == 0)
-		{
-			ft_free_ptr(&line);
-			break ;
-		}
-		write(infile[1], line, ft_strlen(line));
-		write(infile[1], "\n", 1);
-		free(line);
-	}
-	close(infile[1]);
-	if (gnl_ret < 0)
-		ft_error_handling("error: gnl failed\n");
-	return (pipex_fork_here_doc(var, infile));
 }
