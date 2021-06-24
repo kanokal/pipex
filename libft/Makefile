@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jpyo <jpyo@student.42seoul.kr>             +#+  +:+       +#+         #
+#    By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/07 23:52:33 by jpyo              #+#    #+#              #
-#    Updated: 2021/06/10 18:06:48 by jpyo             ###   ########.fr        #
+#    Updated: 2021/06/24 15:07:07 by jpyo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ USER_FILES		=	ft_uint_to_str		ft_ulong_to_str		ft_ullong_to_str	ft_ushort_to_str
 					ft_wchar_strlen		ft_free_int			ft_free_ptr			ft_str_in_chr		ft_power \
 					ft_putbits			ft_dtoa				ft_clamp			ft_atol				ft_bankers_rounding_str	\
 					ft_atoi2			ft_strmvptr			ft_atol2			ft_atod2			ft_quick_sort \
-					ft_swap				ft_bzero_int		ft_free_split
+					ft_swap				ft_bzero_int		ft_free_split		ft_error_handling
 USER_SRCS		=	$(addprefix $(USER_DIR), $(addsuffix .c, $(USER_FILES)))
 USER_OBJS		=	$(addprefix $(USER_DIR), $(addsuffix .o, $(USER_FILES)))
 

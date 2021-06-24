@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpyo <jpyo@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 05:11:50 by marvin            #+#    #+#             */
-/*   Updated: 2021/06/10 18:06:38 by jpyo             ###   ########.fr       */
+/*   Updated: 2021/06/24 15:06:54 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void		ft_lstclear(t_list **lst, void (*del)(void *));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *),
 				void (*del)(void *));
+
 void		ft_rev_str(char *str);
 void		*ft_free_ptr(char **str);
 int			ft_free_int(char **str);
@@ -109,6 +110,7 @@ double		ft_atod2(char *str);
 void		ft_swap(int *a, int *b);
 void		ft_quick_sort(int *arr, int arr_size);
 void		ft_bzero_int(int *arr, size_t n);
+void		ft_error_handling(char *msg);
 
 void		*ft_bigint_delete(t_bigint **src);
 t_bigint	*ft_bigint_create(unsigned int idx);
