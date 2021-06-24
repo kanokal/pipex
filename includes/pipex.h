@@ -6,7 +6,7 @@
 /*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 15:10:21 by jpyo              #+#    #+#             */
-/*   Updated: 2021/06/24 16:54:36 by jpyo             ###   ########.fr       */
+/*   Updated: 2021/06/24 20:07:25 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <sys/wait.h>
 # include "pipex_structure.h"
 # include "../libft/includes/libft.h"
+
+void	pipex_fork(t_pipex var);
 
 void	pipex_parent(t_pipex var);
 void	pipex_child(t_pipex var);
@@ -33,6 +35,6 @@ void	pipex_dup2_error(void);
 void	pipex_fork_error(void);
 void	pipex_malloc_error(char *s1, char *s2, char **split1, char **split2);
 
-void	pipex_here_doc(t_pipex var, int cmd_count);
+void	pipex_here_doc(t_pipex var);
 
 #endif
