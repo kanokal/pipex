@@ -6,7 +6,7 @@
 /*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 05:11:50 by marvin            #+#    #+#             */
-/*   Updated: 2021/06/24 15:06:54 by jpyo             ###   ########.fr       */
+/*   Updated: 2021/07/07 16:13:28 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,9 +108,14 @@ int			ft_atoi2(const char *str);
 char		*ft_strmvptr(char *ptr, const char *s);
 double		ft_atod2(char *str);
 void		ft_swap(int *a, int *b);
+void		ft_swap_char(char *a, char *b);
 void		ft_quick_sort(int *arr, int arr_size);
 void		ft_bzero_int(int *arr, size_t n);
 void		ft_error_handling(char *msg);
+void		ft_perror_handling(char *msg);
+int			ft_rand_xor(int seed1, int seed2);
+void		ft_strdelchr(char *str, char del);
+void		ft_strchange(char *str, char dst, char src);
 
 void		*ft_bigint_delete(t_bigint **src);
 t_bigint	*ft_bigint_create(unsigned int idx);

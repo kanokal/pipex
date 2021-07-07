@@ -6,7 +6,7 @@
 /*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 19:42:46 by jpyo              #+#    #+#             */
-/*   Updated: 2021/06/24 19:50:22 by jpyo             ###   ########.fr       */
+/*   Updated: 2021/07/07 17:05:00 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int			main(int argc, char **argv, char **envp)
 	pipex_struct_set(&var, argv, envp);
 	if (argc > 4)
 	{
+		var.infile = argv[1];
+		var.outfile = argv[argc - 1];
 		if (argc > 5 && ft_strncmp(argv[1], "here_doc", 9) == 0)
 		{
 			var.cur = 3;

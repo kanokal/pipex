@@ -6,7 +6,7 @@
 /*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 01:52:42 by jpyo              #+#    #+#             */
-/*   Updated: 2021/06/24 20:21:13 by jpyo             ###   ########.fr       */
+/*   Updated: 2021/07/07 17:04:00 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ static void	pipex_pipe_set(t_pipex *var, int fd[][2], int idx)
 {
 	if (idx == 0)
 	{
-		var->fd[0] = open("infile", O_RDONLY);
+		var->fd[0] = open(var->infile, O_RDONLY);
 		if (var->fd[0] < 0)
 			pipex_open_error();
 		var->fd[1] = fd[idx][1];
 	}
 	else if (idx == var->cmd_count - 1)
 	{
-		var->fd[1] = open("outfile", O_WRONLY | O_CREAT | O_TRUNC,
+		var->fd[1] = open(var->outfile, O_WRONLY | O_CREAT | O_TRUNC,
 							S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 		if (var->fd[1] < 0)
 			pipex_open_error();

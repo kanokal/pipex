@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error_handling.c                                :+:      :+:    :+:   */
+/*   ft_strdelchr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/24 15:05:42 by jpyo              #+#    #+#             */
-/*   Updated: 2021/07/04 14:49:25 by jpyo             ###   ########.fr       */
+/*   Created: 2021/07/07 15:19:55 by jpyo              #+#    #+#             */
+/*   Updated: 2021/07/07 15:24:26 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-void	ft_error_handling(char *msg)
+void	ft_strdelchr(char *str, char del)
 {
-	if (msg != NULL)
-		write(2, msg, ft_strlen(msg));
-	exit(1);
-}
+	int	idx;
+	int	j;
 
-void	ft_perror_handling(char *msg)
-{
-	if (msg != NULL)
-		perror(msg);
-	else
-		ft_error_handling("please write perror message\n");
-	exit(1);
+	idx = 0;
+	while (str[idx] != 0)
+	{
+		if (str[idx] == del)
+		{
+			j = idx;
+			while (1)
+			{
+				str[j] = str[j + 1];
+				if (str[j] == 0)
+					break ;
+				j++;
+			}
+			continue ;
+		}
+		idx++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 21:12:18 by jpyo              #+#    #+#             */
-/*   Updated: 2021/06/24 20:07:27 by jpyo             ###   ########.fr       */
+/*   Updated: 2021/07/07 17:03:50 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ typedef struct	s_pipex
 	int			cmd_count;
 	char		**argv;
 	char		**envp;
+	char		*infile;
+	char		*outfile;
 }				t_pipex;
 
 #endif

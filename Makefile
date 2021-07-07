@@ -6,7 +6,7 @@
 #    By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/11 14:51:11 by jpyo              #+#    #+#              #
-#    Updated: 2021/06/24 20:07:49 by jpyo             ###   ########.fr        #
+#    Updated: 2021/07/07 16:10:15 by jpyo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ HEADER_DIR		=	./includes/
 
 FILES			=	pipex \
 					pipex_fork pipex_child \
-					error_handling pipex_utils \
+					error_handling pipex_utils pipex_utils2 \
 					pipex_here_doc
 SRCS_DIR		=	./srcs/
 SRCS			=	$(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))

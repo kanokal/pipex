@@ -6,7 +6,7 @@
 /*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 17:34:45 by jpyo              #+#    #+#             */
-/*   Updated: 2021/06/24 20:06:26 by jpyo             ###   ########.fr       */
+/*   Updated: 2021/07/07 15:54:56 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,4 @@ char	**pipex_get_path(char **envp)
 	if (split == NULL)
 		return (NULL);
 	return (split);
-}
-
-void	pipex_get_path_n_cmd(char ***path, char ***cmd, t_pipex var)
-{
-	*path = pipex_get_path(var.envp);
-	if (*path == NULL)
-		ft_error_handling("error: malloc failed\n");
-	*cmd = ft_split(var.argv[var.cur], ' ');
-	if (*cmd == NULL)
-		ft_error_handling("error: malloc failed\n");
 }

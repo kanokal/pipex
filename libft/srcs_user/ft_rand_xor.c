@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error_handling.c                                :+:      :+:    :+:   */
+/*   ft_rand_xor.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/24 15:05:42 by jpyo              #+#    #+#             */
-/*   Updated: 2021/07/04 14:49:25 by jpyo             ###   ########.fr       */
+/*   Created: 2021/07/04 14:32:51 by jpyo              #+#    #+#             */
+/*   Updated: 2021/07/04 14:59:00 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-void	ft_error_handling(char *msg)
-{
-	if (msg != NULL)
-		write(2, msg, ft_strlen(msg));
-	exit(1);
-}
+/*
+** XOR shift random number generator
+** https://namu.wiki/w/%EB%82%9C%EC%88%98%EC%83%9D%EC%84%B1#s-3.4
+*/
 
-void	ft_perror_handling(char *msg)
+int	ft_rand_xor(int seed1, int seed2)
 {
-	if (msg != NULL)
-		perror(msg);
-	else
-		ft_error_handling("please write perror message\n");
-	exit(1);
+	int x;
+	int y;
+
+	x = seed1;
+	y = seed2;
+	seed1 = y;
+	x ^= x << 23;
+	seed2 = x ^ y ^ (x >> 17) ^ (y >> 26);
+	return (seed2 + y);
 }

@@ -6,7 +6,7 @@
 /*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 15:18:45 by jpyo              #+#    #+#             */
-/*   Updated: 2021/06/24 15:16:15 by jpyo             ###   ########.fr       */
+/*   Updated: 2021/07/07 17:09:51 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static void	pipex_child_do(t_pipex var)
 	char	*execve_path;
 
 	pipex_get_path_n_cmd(&path, &cmd, var);
+	if (ft_strlen(cmd[0]) == 0)
+		ft_error_handling("error: some cmds are empty\n");
 	idx = 0;
 	while (path[idx] != 0)
 	{

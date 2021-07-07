@@ -20,3 +20,12 @@ void	ft_swap(int *a, int *b)
 	*a = *b;
 	*b = temp;
 }
+
+void	ft_swap_char(char *a, char *b)
+{
+	char temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}

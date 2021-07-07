@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error_handling.c                                :+:      :+:    :+:   */
+/*   ft_strchange.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/24 15:05:42 by jpyo              #+#    #+#             */
-/*   Updated: 2021/07/04 14:49:25 by jpyo             ###   ########.fr       */
+/*   Created: 2021/07/07 16:12:29 by jpyo              #+#    #+#             */
+/*   Updated: 2021/07/07 16:13:19 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-void	ft_error_handling(char *msg)
+void	ft_strchange(char *str, char dst, char src)
 {
-	if (msg != NULL)
-		write(2, msg, ft_strlen(msg));
-	exit(1);
-}
+	int	idx;
 
-void	ft_perror_handling(char *msg)
-{
-	if (msg != NULL)
-		perror(msg);
-	else
-		ft_error_handling("please write perror message\n");
-	exit(1);
+	idx = 0;
+	while (str[idx] != 0)
+	{
+		if (str[idx] == dst)
+			str[idx] = src;
+		idx++;
+	}
 }
