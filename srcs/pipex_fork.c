@@ -65,15 +65,9 @@ static void	pipex_pipe_set(t_pipex *var, int fd[][2], int idx)
 void	pipex_fork(t_pipex var)
 {
 	int		idx;
-	int		fd[var.cmd_count - 1][2];
+	int		**fd;
 
-	idx = 0;
-	while (idx < var.cmd_count - 1)
-	{
-		if (pipe(fd[idx]) < 0)
-			pipex_pipe_error();
-		idx++;
-	}
+	fd = pipex_create_pipe(var.cmd_count - 1);
 	idx = 0;
 	while (idx < var.cmd_count)
 	{

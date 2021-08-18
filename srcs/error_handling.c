@@ -12,7 +12,7 @@
 
 #include "../includes/pipex.h"
 
-void	pipex_error_handling(char *s1, char *s2, char **split1, char **split2)
+void	pipex_malloc_error(char *s1, char *s2, char **split1, char **split2)
 {
 	if (s1 != NULL)
 		free(s1);

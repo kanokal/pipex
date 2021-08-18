@@ -34,6 +34,7 @@ void	pipex_open_error(void);
 void	pipex_dup2_error(void);
 void	pipex_fork_error(void);
 void	pipex_malloc_error(char *s1, char *s2, char **split1, char **split2);
+int		**pipex_create_pipe(int count);
 
 void	pipex_here_doc(t_pipex var);
 
