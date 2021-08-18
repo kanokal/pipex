@@ -18,7 +18,7 @@ static void	pipex_struct_set(t_pipex *var, char **argv, char **envp)
 	var->envp = envp;
 }
 
-int			main(int argc, char **argv, char **envp)
+int	main(int argc, char **argv, char **envp)
 {
 	t_pipex	var;
 

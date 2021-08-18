@@ -83,7 +83,7 @@ static void	pipex_fork_here_doc(t_pipex var, int infile[2])
 	}
 }
 
-void		pipex_here_doc(t_pipex var)
+void	pipex_here_doc(t_pipex var)
 {
 	int		gnl_ret;
 	int		infile[2];

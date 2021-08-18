@@ -62,7 +62,7 @@ static void	pipex_pipe_set(t_pipex *var, int fd[][2], int idx)
 	}
 }
 
-void		pipex_fork(t_pipex var)
+void	pipex_fork(t_pipex var)
 {
 	int		idx;
 	int		fd[var.cmd_count - 1][2];

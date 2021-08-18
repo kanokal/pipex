@@ -33,7 +33,7 @@ static void	pipex_child_do(t_pipex var)
 	ft_error_handling("execve: invalid command\n");
 }
 
-void		pipex_child(t_pipex var)
+void	pipex_child(t_pipex var)
 {
 	if (dup2(var.fd[0], 0) < 0)
 		pipex_dup2_error();
