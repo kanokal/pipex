@@ -34,23 +34,17 @@ static int	get_next_line_return(char **line, char **str)
 	return (0);
 }
 
-int			get_next_line(int fd, char **line)
+static int	get_next_line_do(int fd, char **line, char **str, char *buf)
 {
-	static char	*str[OPEN_MAX];
-	char		*buf;
-	char		*tmp;
-	int			idx;
+	int		idx;
+	char	*tmp;
 
-	if (fd < 0 || fd >= OPEN_MAX || BUFFER_SIZE <= 0 || line == 0)
-		return (-1);
-	if ((buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1))) == NULL)
-		return (ft_free_int(&buf));
-	if (str[fd] == NULL)
-		str[fd] = ft_strdup("");
 	idx = 0;
-	while (((ft_strchr(str[fd], '\n')) == 0)
-				&& ((idx = read(fd, buf, BUFFER_SIZE)) > 0))
+	while (ft_strchr(str[fd], '\n') == 0)
 	{
+		idx = read(fd, buf, BUFFER_SIZE);
+		if (idx <= 0)
+			break ;
 		buf[idx] = 0;
 		tmp = ft_strjoin(str[fd], buf);
 		ft_free_int(&str[fd]);
@@ -60,4 +54,19 @@ int			get_next_line(int fd, char **line)
 	if (idx < 0)
 		return (ft_free_int(&str[fd]));
 	return (get_next_line_return(line, &str[fd]));
+}
+
+int	get_next_line(int fd, char **line)
+{
+	static char	*str[OPEN_MAX];
+	char		*buf;
+
+	if (fd < 0 || fd >= OPEN_MAX || BUFFER_SIZE <= 0 || line == 0)
+		return (-1);
+	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (buf == NULL)
+		return (ft_free_int(&buf));
+	if (str[fd] == NULL)
+		str[fd] = ft_strdup("");
+	return (get_next_line_do(fd, line, str, buf));
 }

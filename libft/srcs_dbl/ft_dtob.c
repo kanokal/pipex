@@ -84,7 +84,7 @@ static t_dbl	*ft_dtob_0(t_dbl *dbl)
 	return (dbl);
 }
 
-t_dbl			*ft_dtob(double n)
+t_dbl	*ft_dtob(double n)
 {
 	long long	*bits;
 	t_dbl		*dbl;
