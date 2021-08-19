@@ -12,7 +12,7 @@
 
 #include "../includes/libft.h"
 
-int		ft_wint_byte(const wint_t c)
+int	ft_wint_byte(const wint_t c)
 {
 	if (c < 128)
 		return (1);

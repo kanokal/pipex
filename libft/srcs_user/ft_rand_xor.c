@@ -19,8 +19,8 @@
 
 int	ft_rand_xor(int seed1, int seed2)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = seed1;
 	y = seed2;

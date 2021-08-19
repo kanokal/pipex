@@ -14,7 +14,7 @@
 
 void	ft_quick_sort(int *arr, int arr_size)
 {
-	int pivot;
+	int	pivot;
 	int	i;
 	int	j;
 

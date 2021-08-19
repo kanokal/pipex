@@ -52,7 +52,7 @@ static int	ft_putwchar_2bytes(wint_t c, int fd)
 ** 6byte = 1111110x 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx
 */
 
-int			ft_putwchar_fd(wint_t c, int fd)
+int	ft_putwchar_fd(wint_t c, int fd)
 {
 	if (fd < 0)
 		return (-1);

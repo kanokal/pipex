@@ -16,13 +16,14 @@ int	ft_putwchar_str_fd(wchar_t *str, int fd, int size)
 {
 	int	len;
 	int	idx;
-	int is_err;
+	int	is_err;
 
 	len = 0;
 	idx = 0;
 	while (idx < size && str[idx] != 0)
 	{
-		if ((is_err = ft_putwchar_fd(str[idx], fd)) < 0)
+		is_err = ft_putwchar_fd(str[idx], fd);
+		if (is_err < 0)
 			return (-1);
 		len += is_err;
 		idx++;

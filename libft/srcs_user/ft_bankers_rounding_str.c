@@ -23,7 +23,7 @@ static char	*ft_bankers_rounding_raise(char *str, int point)
 		if (str[idx] < '0' || str[idx] > '9')
 		{
 			idx++;
-			continue;
+			continue ;
 		}
 		str[idx] = '0';
 		idx++;
@@ -62,7 +62,7 @@ static char	*ft_bankers_rounding_str_2(char *dst, int point)
 	return (dst);
 }
 
-char		*ft_bankers_rounding_str(char *src, int point)
+char	*ft_bankers_rounding_str(char *src, int point)
 {
 	char	*dst;
 	int		round;
