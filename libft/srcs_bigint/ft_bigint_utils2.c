@@ -34,7 +34,7 @@ t_bigint	*ft_bigint_create(unsigned int idx)
 	return (dst);
 }
 
-int			ft_bigint_cpy(t_bigint *dst, t_bigint *src)
+int	ft_bigint_cpy(t_bigint *dst, t_bigint *src)
 {
 	unsigned int	idx;
 
@@ -60,7 +60,7 @@ t_bigint	*ft_bigint_dup(t_bigint *src)
 	return (dst);
 }
 
-int			ft_bigint_increase(t_bigint *dst, unsigned int length)
+int	ft_bigint_increase(t_bigint *dst, unsigned int length)
 {
 	unsigned int	*tmp;
 

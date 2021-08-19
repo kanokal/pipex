@@ -56,7 +56,7 @@ static int	ft_bigint_putdec(t_bigint *dst)
 	return (0);
 }
 
-int			ft_bigint_putstr(t_bigint *dst, int is_dec)
+int	ft_bigint_putstr(t_bigint *dst, int is_dec)
 {
 	char	*str;
 	char	*tmp;

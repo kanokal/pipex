@@ -21,7 +21,7 @@ void	*ft_bigint_delete(t_bigint **src)
 	return (NULL);
 }
 
-int		ft_bigint_delete_int(t_bigint **src, int err)
+int	ft_bigint_delete_int(t_bigint **src, int err)
 {
 	free((*src)->bigint);
 	(*src)->bigint = NULL;

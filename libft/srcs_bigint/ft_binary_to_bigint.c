@@ -107,7 +107,7 @@ static int	ft_bitob_set(long long *bits, int is_dec, int *dec_length)
 	return (start_bits);
 }
 
-int			ft_binary_to_bigint(t_bigint *dst, long long bits,
+int	ft_binary_to_bigint(t_bigint *dst, long long bits,
 									int is_dec, int dec_length)
 {
 	int				start_bits;

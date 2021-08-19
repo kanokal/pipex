@@ -54,7 +54,7 @@ static char	*ft_bigint_to_a_get(t_bigint *dst)
 	return (str);
 }
 
-char		*ft_bigint_to_a(t_bigint *dst)
+char	*ft_bigint_to_a(t_bigint *dst)
 {
 	char	*str;
 
