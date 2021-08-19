@@ -128,7 +128,7 @@ char		*ft_bigint_to_a(t_bigint *dst);
 int			ft_bigint_delete_int(t_bigint **src, int err);
 t_bigint	*ft_bigint_power(unsigned int n, int pow);
 int			ft_binary_to_bigint(t_bigint *dst, long long bits,
-								int is_dec, int dec_length);
+				int is_dec, int dec_length);
 
 t_dbl		*ft_dtob(double n);
 t_dbl		*ft_dbl_create(void);

@@ -13,26 +13,26 @@
 #ifndef LIBFT_STRUCTURES_H
 # define LIBFT_STRUCTURES_H
 
-typedef struct		s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }					t_list;
 
-typedef struct		s_bigint
+typedef struct s_bigint
 {
 	unsigned int	len;
 	unsigned int	*bigint;
 }					t_bigint;
 
-typedef struct		s_dbl
+typedef struct s_dbl
 {
 	int				sign;
 	t_bigint		*integer;
 	t_bigint		*decimal;
 }					t_dbl;
 
-typedef struct		s_vec3
+typedef struct s_vec3
 {
 	double			x;
 	double			y;
