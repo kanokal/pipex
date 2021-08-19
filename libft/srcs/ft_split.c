@@ -25,30 +25,6 @@ static void	*ft_2d_free(char **s, int row)
 	return (NULL);
 }
 
-static char	**ft_alloc_2d(char const *s, char c)
-{
-	char	**temp;
-	size_t	idx;
-	size_t	len;
-
-	idx = 0;
-	if (s[0] == c)
-		idx = 1;
-	len = 0;
-	while (s[idx])
-	{
-		if (s[idx] == c && s[idx - 1] != c)
-			len++;
-		idx++;
-	}
-	if (s[idx - 1] != c)
-		len++;
-	if ((temp = (char **)malloc(sizeof(char *) * (len + 1))) == NULL)
-		return (ft_2d_free(temp, -1));
-	temp[len] = 0;
-	return (temp);
-}
-
 static int	ft_put_split(char **temp, char *start, char *end, int row)
 {
 	size_t	idx;
@@ -57,7 +33,8 @@ static int	ft_put_split(char **temp, char *start, char *end, int row)
 	len = 0;
 	while ((start + len) != end)
 		len++;
-	if ((temp[row] = (char *)malloc(sizeof(char) * (len + 1))) == NULL)
+	temp[row] = (char *)malloc(sizeof(char) * (len + 1));
+	if (temp[row] == NULL)
 	{
 		ft_2d_free(temp, row);
 		return (-1);
@@ -75,48 +52,57 @@ static int	ft_put_split(char **temp, char *start, char *end, int row)
 static char	**ft_start_split(char *start, char c, char **temp, int row)
 {
 	char	*end;
-	int		idx;
 
 	end = start;
-	idx = 0;
-	while (end[idx])
+	while (*end != 0)
 	{
-		if (end[idx] == c)
+		if (*end == c)
 		{
-			if ((row = ft_put_split(temp, start, (end + idx), row)) == -1)
+			row = ft_put_split(temp, start, end, row);
+			if (row == -1)
 				return (NULL);
-			start = (end + idx);
-			while (*start && *start == c)
-				start++;
-			end = start;
-			idx = -1;
+			while (*end != 0 && *end == c)
+				end++;
+			start = end;
+			continue ;
 		}
-		idx++;
+		end++;
 	}
-	if (end[idx - 1] != c)
-		if ((row = ft_put_split(temp, start, (end + idx), row)) == -1)
+	if (*(end - 1) != c)
+	{
+		row = ft_put_split(temp, start, end, row);
+		if (row == -1)
 			return (NULL);
+	}
 	temp[row] = 0;
 	return (temp);
 }
 
-char		**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
+	size_t	idx;
+	size_t	len;
 	char	**temp;
 	char	*start;
 
-	if (ft_strlen(s) == 0)
+	idx = 0;
+	len = 0;
+	while (s[idx] != 0)
 	{
-		temp = (char **)malloc(sizeof(char *));
-		if (temp == NULL)
-			return (NULL);
-		*temp = 0;
-		return (temp);
+		if (s[idx] == c && s[idx - 1] != c)
+			len++;
+		idx++;
 	}
-	if ((temp = ft_alloc_2d(s, c)) == NULL)
+	if (idx != 0 && s[idx - 1] != c)
+		len++;
+	temp = (char **)malloc(sizeof(char *) * (len + 1));
+	if (temp == NULL)
 		return (NULL);
+	temp[len] = 0;
 	start = (char *)s;
-	while (*start && *start == c)
+	while (*start != 0 && *start == c)
 		start++;
+	if (*start == 0)
+		return (temp);
 	return (ft_start_split(start, c, temp, 0));
 }

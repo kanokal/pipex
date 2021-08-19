@@ -44,30 +44,38 @@ static int	ft_calc_len(unsigned int n)
 	return (len);
 }
 
-char		*ft_itoa(int n)
+static char	*ft_itoa_ret(int num, int is_negative)
 {
-	int				is_negative;
-	int				len;
-	unsigned int	num;
-	char			*tmp;
+	int		len;
+	char	*tmp;
 
-	is_negative = 1;
-	if (n < 0)
-		is_negative = -1;
-	num = n * is_negative;
 	len = ft_calc_len(num);
 	if (is_negative < 0)
 	{
-		if ((tmp = (char *)malloc(sizeof(char) * (len + 2))) == NULL)
+		tmp = (char *)malloc(sizeof(char) * (len + 2));
+		if (tmp == NULL)
 			return (NULL);
 		tmp[0] = '-';
 		ft_put_num(num, tmp, len + 1);
 	}
 	else
 	{
-		if ((tmp = (char *)malloc(sizeof(char) * (len + 1))) == NULL)
+		tmp = (char *)malloc(sizeof(char) * (len + 1));
+		if (tmp == NULL)
 			return (NULL);
 		ft_put_num(num, tmp, len);
 	}
 	return (tmp);
+}
+
+char	*ft_itoa(int n)
+{
+	int				is_negative;
+	unsigned int	num;
+
+	is_negative = 1;
+	if (n < 0)
+		is_negative = -1;
+	num = n * is_negative;
+	return (ft_itoa_ret(num, is_negative));
 }

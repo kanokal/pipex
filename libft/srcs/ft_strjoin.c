@@ -19,7 +19,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	j;
 
 	idx = ft_strlen(s1) + ft_strlen(s2) + 1;
-	if ((temp = (char *)malloc(sizeof(char) * idx)) == NULL)
+	temp = (char *)malloc(sizeof(char) * idx);
+	if (temp == NULL)
 		return (NULL);
 	idx = 0;
 	while (s1[idx])

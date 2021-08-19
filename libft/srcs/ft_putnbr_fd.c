@@ -25,7 +25,7 @@ static void	ft_put_str(int fd, char *tmp, int is_negative, int idx)
 	}
 }
 
-void		ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
 	char			tmp[13];
 	unsigned int	num;

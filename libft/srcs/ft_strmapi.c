@@ -17,7 +17,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char			*temp;
 	unsigned int	idx;
 
-	if ((temp = ft_strdup(s)) == NULL)
+	temp = ft_strdup(s);
+	if (temp == NULL)
 		return (NULL);
 	idx = 0;
 	while (temp[idx])

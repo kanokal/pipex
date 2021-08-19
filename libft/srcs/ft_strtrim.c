@@ -26,7 +26,7 @@ static int	ft_check_char(char c, char const *s)
 	return (0);
 }
 
-char		*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	start;
 	size_t	end;
@@ -39,7 +39,8 @@ char		*ft_strtrim(char const *s1, char const *set)
 	end = ft_strlen(s1);
 	while (end > start && ft_check_char(s1[end - 1], set))
 		end--;
-	if ((temp = (char *)malloc(sizeof(char) * (end - start + 1))) == NULL)
+	temp = (char *)malloc(sizeof(char) * (end - start + 1));
+	if (temp == NULL)
 		return (NULL);
 	idx = 0;
 	while (start < end)
