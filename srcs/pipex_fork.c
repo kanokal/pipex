@@ -50,7 +50,7 @@ static void	pipex_pipe_set(t_pipex *var, int fd[][2], int idx)
 	else if (idx == var->cmd_count - 1)
 	{
 		var->fd[1] = open(var->outfile, O_WRONLY | O_CREAT | O_TRUNC,
-							S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+				S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 		if (var->fd[1] < 0)
 			pipex_open_error();
 		var->fd[0] = fd[idx - 1][0];
