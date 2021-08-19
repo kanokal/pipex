@@ -36,7 +36,7 @@ static int	ft_get_top_double_1(char *dtoa)
 	return (pow);
 }
 
-int			ft_get_top_double(double n, char *dtoa)
+int	ft_get_top_double(double n, char *dtoa)
 {
 	int	pow;
 

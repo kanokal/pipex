@@ -24,7 +24,8 @@ char	*ft_uchar_to_str(unsigned char n, char *base)
 
 	base_length = (int)ft_strlen(base);
 	len = (int)ft_uchar_length(n, base_length);
-	if ((str = (char *)malloc(sizeof(char) * (len + 1))) == NULL)
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (str == NULL)
 		return (ft_free_ptr(&str));
 	str[len--] = 0;
 	if (n == 0)

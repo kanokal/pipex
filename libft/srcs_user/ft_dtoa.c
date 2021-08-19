@@ -22,7 +22,7 @@ static void	*ft_dtoa_free(t_dbl **dbl, char **s1, char **s2)
 	return (NULL);
 }
 
-char		*ft_dtoa(double n)
+char	*ft_dtoa(double n)
 {
 	t_dbl	*dbl;
 	char	*integer;

@@ -33,7 +33,7 @@ static char	*ft_raise_end(char *str, char *base)
 	return (rst);
 }
 
-char		*ft_raise_base_str(char *src, int point, char *base)
+char	*ft_raise_base_str(char *src, int point, char *base)
 {
 	char	*dst;
 
