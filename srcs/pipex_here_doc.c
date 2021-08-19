@@ -51,7 +51,7 @@ static void	pipex_here_doc_pipe_set(t_pipex *var, int *in, int fd[][2], int idx)
 	else if (idx == var->cmd_count - 1)
 	{
 		var->fd[1] = open("outfile", O_WRONLY | O_CREAT | O_APPEND,
-			S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+				S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 		if (var->fd[1] < 0)
 			pipex_open_error();
 		var->fd[0] = fd[idx - 1][0];
@@ -89,7 +89,7 @@ void	pipex_here_doc(t_pipex var)
 	{
 		gnl_ret = get_next_line(0, &line);
 		if (gnl_ret < 0)
-			break;
+			break ;
 		if (ft_strncmp(line, var.argv[2], ft_strlen(var.argv[2]) + 1) == 0)
 		{
 			ft_free_ptr(&line);

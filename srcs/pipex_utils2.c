@@ -45,7 +45,6 @@ static char	**pipex_set_cmd(t_pipex var)
 
 void	pipex_get_path_n_cmd(char ***path, char ***cmd, t_pipex var)
 {
-
 	*path = pipex_get_path(var.envp);
 	if (*path == NULL)
 		ft_error_handling("error: malloc failed\n");
