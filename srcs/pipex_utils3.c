@@ -14,6 +14,7 @@
 
 static int	**pipex_create_malloc(int count)
 {
+	int	idx;
 	int	**fd;
 
 	fd = (int **)malloc(sizeof(int *) * count);
