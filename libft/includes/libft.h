@@ -114,6 +114,8 @@ void		ft_bzero_int(int *arr, size_t n);
 void		ft_error_handling(char *msg);
 void		ft_perror_handling(char *msg);
 int			ft_rand_xor(int seed1, int seed2);
+void		ft_strdelchr(char *str, char del);
+void		ft_strchange(char *str, char dst, char src);
 
 void		*ft_bigint_delete(t_bigint **src);
 t_bigint	*ft_bigint_create(unsigned int idx);

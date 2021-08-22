@@ -74,4 +74,5 @@ void	pipex_fork(t_pipex var)
 		pipex_pipe_set(&var, fd, idx);
 		pipex_fork_do(&var, &idx);
 	}
+	ft_free_split(fd);
 }

@@ -68,13 +68,14 @@ static void	pipex_fork_here_doc(t_pipex var, int infile[2])
 	int		idx;
 	int		**fd;
 
-	fd = pipex_create_malloc(count);
+	fd = pipex_create_pipe(count);
 	idx = 0;
 	while (idx < var.cmd_count)
 	{
 		pipex_here_doc_pipe_set(&var, infile, fd, idx);
 		pipex_here_doc_do(&var, &idx);
 	}
+	ft_free_split(fd);
 }
 
 void	pipex_here_doc(t_pipex var)
