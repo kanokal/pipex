@@ -68,7 +68,7 @@ static void	pipex_fork_here_doc(t_pipex var, int infile[2])
 	int		idx;
 	int		**fd;
 
-	fd = pipex_create_pipe(count);
+	fd = pipex_create_pipe(var.cmd_count - 1);
 	idx = 0;
 	while (idx < var.cmd_count)
 	{
