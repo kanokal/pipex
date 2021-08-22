@@ -19,9 +19,9 @@ void	pipex_malloc_error(char *s1, char *s2, char **split1, char **split2)
 	if (s2 != NULL)
 		free(s2);
 	if (split1 != NULL)
-		ft_free_split(split1);
+		ft_free_2d_c(split1);
 	if (split2 != NULL)
-		ft_free_split(split2);
+		ft_free_2d_c(split2);
 	write(2, "error: malloc failed\n", 21);
 	exit(1);
 }
