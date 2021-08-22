@@ -38,7 +38,7 @@ static void	pipex_fork_do(t_pipex *var, int *idx)
 		pipex_fork_error();
 }
 
-static void	pipex_pipe_set(t_pipex *var, int fd[][2], int idx)
+static void	pipex_pipe_set(t_pipex *var, int **fd, int idx)
 {
 	if (idx == 0)
 	{

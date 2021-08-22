@@ -41,7 +41,7 @@ static void	pipex_here_doc_do(t_pipex *var, int *idx)
 		pipex_fork_error();
 }
 
-static void	pipex_here_doc_pipe_set(t_pipex *var, int *in, int fd[][2], int idx)
+static void	pipex_here_doc_pipe_set(t_pipex *var, int *in, int **fd, int idx)
 {
 	if (idx == 0)
 	{

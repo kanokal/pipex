@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free_split.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 18:06:19 by jpyo              #+#    #+#             */
-/*   Updated: 2021/06/21 14:30:43 by jpyo             ###   ########.fr       */
+/*   Updated: 2021/08/22 16:52:07 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-void	*ft_free_split(char **s)
+void	*ft_free_split(void **s)
 {
 	int	i;
 
