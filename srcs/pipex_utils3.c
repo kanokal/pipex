@@ -38,6 +38,7 @@ static int	**pipex_create_malloc(int count)
 
 int	**pipex_create_pipe(int count)
 {
+	int	idx;
 	int	**fd;
 
 	fd = pipex_create_malloc(count);
