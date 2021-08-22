@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 05:11:50 by marvin            #+#    #+#             */
-/*   Updated: 2021/08/22 16:52:17 by marvin           ###   ########.fr       */
+/*   Updated: 2021/08/22 16:53:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ t_list		*ft_lstmap(t_list *lst, void *(*f)(void *),
 void		ft_rev_str(char *str);
 void		*ft_free_ptr(char **str);
 int			ft_free_int(char **str);
-void		*ft_free_split(void **s);
+void		*ft_free_2d_c(int **arr)
+void		*ft_free_2d_i(int **arr)
 char		*ft_uint_to_str(unsigned int n, char *base);
 char		*ft_ulong_to_str(unsigned long n, char *base);
 char		*ft_ullong_to_str(unsigned long long n, char *base);
