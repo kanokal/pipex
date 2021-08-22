@@ -18,7 +18,7 @@ HEADER_DIR		=	./includes/
 
 FILES			=	pipex \
 					pipex_fork pipex_child \
-					error_handling pipex_utils pipex_utils2 \
+					error_handling pipex_utils pipex_utils2 pipex_utils3 \
 					pipex_here_doc
 SRCS_DIR		=	./srcs/
 SRCS			=	$(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
