@@ -75,7 +75,7 @@ static void	pipex_fork_here_doc(t_pipex var, int infile[2])
 		pipex_here_doc_pipe_set(&var, infile, fd, idx);
 		pipex_here_doc_do(&var, &idx);
 	}
-	fd = ft_free_2d_i(fd);
+	//fd = ft_free_2d_i(fd);
 }
 
 void	pipex_here_doc(t_pipex var)
