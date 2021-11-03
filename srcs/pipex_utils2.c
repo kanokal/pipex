@@ -6,47 +6,35 @@
 /*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 15:54:50 by jpyo              #+#    #+#             */
-/*   Updated: 2021/07/07 16:55:04 by jpyo             ###   ########.fr       */
+/*   Updated: 2021/11/03 20:01:41 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-static void	pipex_set_cmd_del(char *start, char del)
+char	*pipex_get_execve_path(t_pipex var, char ***cmd, int **fd)
 {
-	char	*end;
+	int		idx;
+	char	**path;
+	char	*execve_path;
 
-	end = ft_strchr(start + 1, del);
-	*end = 0;
-	ft_strdelchr(start + 1, ' ');
-	*start = ' ';
-	while (start != end)
+	path = pipex_get_path(var.envp);
+	if (path == NULL)
+		pipex_error_handling(NULL, "error: malloc failed\n", fd);
+	*cmd = ft_split(var.argv[var.cur], ' ');
+	if (*cmd == NULL)
 	{
-		if (*start == 0)
-			*start = ' ';
-		start++;
+		ft_free_2d_c(path);
+		pipex_error_handling(NULL, "error: malloc failed\n", fd);
 	}
-	*end = ' ';
-}
-
-static char	**pipex_set_cmd(t_pipex var)
-{
-	char	*start;
-	char	**tmp;
-
-	start = ft_strchr(var.argv[var.cur], '\'');
-	if (start != NULL)
-		pipex_set_cmd_del(start, '\'');
-	tmp = ft_split(var.argv[var.cur], ' ');
-	if (tmp == NULL)
-		ft_error_handling("error: malloc failed\n");
-	return (tmp);
-}
-
-void	pipex_get_path_n_cmd(char ***path, char ***cmd, t_pipex var)
-{
-	*path = pipex_get_path(var.envp);
-	if (*path == NULL)
-		ft_error_handling("error: malloc failed\n");
-	*cmd = pipex_set_cmd(var);
+	idx = 0;
+	while (path[idx] != 0)
+	{
+		execve_path = pipex_set_path(idx++, path, *cmd, fd);
+		if (access(execve_path, F_OK) == 0)
+			break ;
+		ft_free_ptr(&execve_path);
+	}
+	ft_free_2d_c(path);
+	return (execve_path);
 }

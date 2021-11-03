@@ -6,7 +6,7 @@
 /*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 15:54:50 by jpyo              #+#    #+#             */
-/*   Updated: 2021/07/07 16:55:04 by jpyo             ###   ########.fr       */
+/*   Updated: 2021/11/03 20:11:44 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ static int	**pipex_create_malloc(int count)
 	int	idx;
 	int	**fd;
 
-	fd = (int **)malloc(sizeof(int *) * count);
+	fd = (int **)malloc(sizeof(int *) * (count + 1));
 	if (fd == NULL)
-		ft_error_handling("error: malloc failed\n");
+		pipex_error_handling(NULL, "error: malloc failed\n", NULL);
+	fd[count] = NULL;
 	idx = 0;
 	while (idx < count)
 	{
@@ -29,7 +30,7 @@ static int	**pipex_create_malloc(int count)
 			while (--idx >= 0)
 				free(fd[idx]);
 			free(fd);
-			ft_error_handling("error: malloc failed\n");
+			pipex_error_handling(NULL, "error: malloc failed\n", NULL);
 		}
 		idx++;
 	}
@@ -46,7 +47,7 @@ int	**pipex_create_pipe(int count)
 	while (idx < count)
 	{
 		if (pipe(fd[idx]) < 0)
-			pipex_pipe_error();
+			pipex_error_handling("pipe", NULL, NULL);
 		idx++;
 	}
 	return (fd);

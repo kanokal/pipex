@@ -6,24 +6,24 @@
 /*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 17:34:45 by jpyo              #+#    #+#             */
-/*   Updated: 2021/07/07 15:54:56 by jpyo             ###   ########.fr       */
+/*   Updated: 2021/11/03 19:47:16 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-char	*pipex_set_path(int i, char **absolute_path, char **cmd)
+char	*pipex_set_path(int i, char **absolute_path, char **cmd, int **fd)
 {
 	char	*path;
 	char	*execve_path;
 
 	path = ft_strjoin(absolute_path[i], "/");
 	if (path == NULL)
-		ft_error_handling("error: malloc failed\n");
+		pipex_error_handling(NULL, "error: malloc failed\n", fd);
 	execve_path = ft_strjoin(path, cmd[0]);
 	ft_free_ptr(&path);
 	if (execve_path == NULL)
-		ft_error_handling("error: malloc failed\n");
+		pipex_error_handling(NULL, "error: malloc failed\n", fd);
 	return (execve_path);
 }
 
