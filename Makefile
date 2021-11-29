@@ -6,11 +6,12 @@
 #    By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/11 14:51:11 by jpyo              #+#    #+#              #
-#    Updated: 2021/11/27 01:27:29 by jpyo             ###   ########.fr        #
+#    Updated: 2021/11/30 07:10:25 by jpyo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	pipex
+NAME_BONUS		=	pipex_bonus
 CC				=	gcc
 CFLAGS			=	-Wall -Wextra -Werror
 
@@ -44,8 +45,10 @@ $(FT_LIB_DIR)$(FT_LIB) :
 %.o : %.c
 	$(CC) -c $(CFLAGS) $< -o $(<:.c=.o)
 
-bonus : $(FT_LIB_DIR)$(FT_LIB) $(BONUS_OBJS)
-	$(CC) -o $(NAME) $(CFLAGS) $(FT_LIB_DIR)$(FT_LIB) $(BONUS_OBJS)
+$(NAME_BONUS) : $(FT_LIB_DIR)$(FT_LIB) $(BONUS_OBJS)
+	$(CC) -o $(NAME_BONUS) $(CFLAGS) $(FT_LIB_DIR)$(FT_LIB) $(BONUS_OBJS)
+
+bonus : $(NAME_BONUS)
 
 clean :
 	rm -rf $(SRCS_OBJS) $(BONUS_OBJS)
