@@ -6,7 +6,7 @@
 /*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 15:40:16 by jpyo              #+#    #+#             */
-/*   Updated: 2021/11/03 20:16:09 by jpyo             ###   ########.fr       */
+/*   Updated: 2021/11/30 07:36:55 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ static void	pipex_here_doc_pipe_set(t_pipex *var, int *in, int **fd, int idx)
 	}
 	else
 	{
-		var->fd[0] = fd[idx - 1][1];
-		var->fd[1] = fd[idx][0];
+		var->fd[0] = fd[idx - 1][0];
+		var->fd[1] = fd[idx][1];
 	}
 }
 
