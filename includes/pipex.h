@@ -6,7 +6,7 @@
 /*   By: jpyo <jpyo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 15:10:21 by jpyo              #+#    #+#             */
-/*   Updated: 2021/11/03 20:00:01 by jpyo             ###   ########.fr       */
+/*   Updated: 2021/11/30 06:52:08 by jpyo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,5 @@ void	pipex_error_handling(const char *per_msg, const char *err_msg,
 int		**pipex_create_pipe(int count);
 
 void	pipex_here_doc(t_pipex var);
-
-char	**pipex_split(char const *s);
-char	**pipex_start_split(char *start, char *end, char **temp, int row);
 
 #endif
