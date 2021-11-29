@@ -47,7 +47,7 @@ int	**pipex_create_pipe(int count)
 	while (idx < count)
 	{
 		if (pipe(fd[idx]) < 0)
-			pipex_error_handling("pipe", NULL, NULL);
+			pipex_error_handling("pipe", NULL, fd);
 		idx++;
 	}
 	return (fd);
