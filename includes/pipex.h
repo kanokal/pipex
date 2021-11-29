@@ -35,4 +35,7 @@ int		**pipex_create_pipe(int count);
 
 void	pipex_here_doc(t_pipex var);
 
+char	**pipex_split(char const *s);
+char	**pipex_start_split(char *start, char *end, char **temp, int row);
+
 #endif
